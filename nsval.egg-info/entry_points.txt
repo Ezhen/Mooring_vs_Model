@@ -1,0 +1,7 @@
+[console_scripts]
+nsval-analyse = nsval.analyse.timeseries:_cli
+nsval-cmems = nsval.intake.cmems:_cli
+nsval-inventory = nsval.inventory:_cli
+nsval-roms = nsval.intake.roms:_cli
+nsval-validate-daily = nsval.validate.daily:_cli
+nsval-validate-monthly = nsval.validate.monthly:_cli
