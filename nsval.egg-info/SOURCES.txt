@@ -1,8 +1,0 @@
-README.md
-setup.py
-nsval.egg-info/PKG-INFO
-nsval.egg-info/SOURCES.txt
-nsval.egg-info/dependency_links.txt
-nsval.egg-info/entry_points.txt
-nsval.egg-info/requires.txt
-nsval.egg-info/top_level.txt
