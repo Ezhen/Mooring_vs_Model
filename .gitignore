@@ -1,2 +1,8 @@
-nsval.egg-info/
+__pycache__/
+*.pyc
+*.egg-info/
+*.csv
+*.png
+*.nc
+.ipynb_checkpoints/nsval.egg-info/
 *.egg-info/

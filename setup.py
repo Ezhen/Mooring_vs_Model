@@ -6,8 +6,9 @@ setup(
     description      = "North Sea Validation Toolkit — point extraction, "
                        "climatological analysis, and model–observation validation",
     author           = "E. Ivanov",
-    python_requires  = ">=3.9",
-    packages         = find_packages(),
+    #python_requires  = ">=3.9",
+    packages=find_packages(where="nsval_pkg"),
+    package_dir={"": "nsval_pkg"},
     install_requires = [
         "numpy>=1.23",
         "pandas>=1.5",
