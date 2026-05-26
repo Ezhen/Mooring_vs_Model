@@ -485,5 +485,54 @@ def main():
     )
 
 
+	# summer validation — where does the model struggle most?
+	validate_spatial(
+      obs_csv       = OUT_DIR / "TEMP_scoop_55.0_8.0.csv",
+      roms_folder   = "/scratch/ulg/mast/eivanov/Output/CE2COAST_2006",
+      roms_pattern  = "Hindcast_CE2COAST_AVG_*_2c_atm3.nc",
+      roms_variable = "temp",
+      obs_variable  = "TEMP",
+      season        = "JJA",
+      out_csv       = "examples/outputs/spatial_metrics_JJA.csv",
+      out_prefix    = "examples/outputs/spatial_JJA",
+	)
+
+	# run all four seasons
+	for season in ["DJF", "MAM", "JJA", "SON"]:
+    	validate_spatial(
+          obs_csv      = OUT_DIR / "TEMP_scoop_55.0_8.0.csv",
+          roms_folder  = "/scratch/ulg/mast/eivanov/Output/CE2COAST_2006",
+          roms_pattern = "Hindcast_CE2COAST_AVG_*_2c_atm3.nc",
+          season       = season,
+          out_csv      = f"examples/outputs/spatial_metrics_{season}.csv",
+          out_prefix   = f"examples/outputs/spatial_{season}",
+         show_figures = False,
+    	)
+
+
+	from nsval.intake.cmems_region import scoop_region
+
+	scoop_region(
+      folder   = "/home/ulg/mast/eivanov/Validation/MOORING_DATA/",
+      variable = "TEMP",
+      lat_min  = 51.0, lat_max = 62.0,
+      lon_min  = -4.0, lon_max = 10.0,
+      out_csv  = "TEMP_NorthSea.csv",
+	)
+
+	# Step 2 — spatial validation with real maps
+	from nsval.validate.spatial import validate_spatial
+
+	for season in ["DJF", "MAM", "JJA", "SON"]:
+    	validate_spatial(
+          obs_csv      = "TEMP_NorthSea.csv",
+          roms_folder  = "/scratch/ulg/mast/eivanov/Output/CE2COAST_2006",
+          roms_pattern = "Hindcast_CE2COAST_AVG_*_2c_atm3.nc",
+          season       = season,
+          out_csv      = f"examples/outputs/spatial_{season}.csv",
+          out_prefix   = f"examples/outputs/spatial_{season}",
+          show_figures = False,
+    	)
+
 if __name__ == "__main__":
     main()
