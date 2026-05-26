@@ -474,5 +474,16 @@ def main():
     sys.exit(0 if all_passed else 1)
 
 
+
+	seasonal_dashboard(
+      obs_csv    = OUT_DIR / "TEMP_scoop_55.0_8.0.csv",
+      obs_var    = "TEMP",
+      obs_qc_col = "TEMP_QC",
+      model_csv  = OUT_DIR / "roms_temp_55.0_8.0.csv",
+      model_var  = "temp",
+      out_prefix = "examples/outputs/seasonal_dashboard",
+    )
+
+
 if __name__ == "__main__":
     main()

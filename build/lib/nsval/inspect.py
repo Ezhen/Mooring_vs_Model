@@ -133,8 +133,8 @@ def estimate_memory_load(
     total_gb = total_mb / 1024
 
     print(f"\n  {'─'*63}")
-    print(f"  Files containing '{variable}' : "
-          f"{len(df[df.get('error', pd.Series()).isna() if 'error' in df else df.index])}")
+    n_with_var = len(df[df.get('error', pd.Series(dtype=str)).isna()])
+    print(f"  Files containing '{variable}' : {n_with_var}")
     print(f"  Total if loaded at once      : "
           f"{total_mb:,.1f} MB  ({total_gb:.3f} GB)")
     if total_gb >= warn_gb:

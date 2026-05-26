@@ -11,3 +11,4 @@ from .inventory import build_inventory as scan_dataset
 from .inventory import build_variable_catalogue
 from .intake.cmems import scoop_point as safe_point_timeseries
 from .validate.monthly import validate as compare_timeseries
+from .analyse import seasonal_dashboard

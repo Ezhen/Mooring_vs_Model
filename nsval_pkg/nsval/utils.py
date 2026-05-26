@@ -83,17 +83,13 @@ def add_ymd(df, time_col):
 
 
 def build_time(df):
-    """
-    Return a pandas DatetimeIndex from a DataFrame that contains either
-    a 'time' column or separate 'year', 'month', 'day' columns.
-    """
     if "time" in df.columns:
-        return pd.to_datetime(df["time"])
+        return pd.to_datetime(df["time"], infer_datetime_format=True,
+                              errors="coerce")
     elif {"year", "month", "day"}.issubset(df.columns):
         return pd.to_datetime(df[["year", "month", "day"]])
     else:
         raise ValueError("DataFrame has no usable time column.")
-
 
 # ─────────────────────────────────────────────────────────────────────────────
 # I/O
